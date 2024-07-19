@@ -32,6 +32,7 @@
         }
         .list {
             width: 45%;
+            text-align: left;
         }
         ul {
             list-style-type: none;
@@ -39,6 +40,9 @@
         }
         li {
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
         }
         input[type="checkbox"] {
             margin-right: 10px;
@@ -112,6 +116,9 @@
             min-width: 80px;
             text-align: center;
         }
+        .vs {
+            margin: 0 10px;
+        }
         .error-message {
             color: #ffd700;
             text-align: center;
@@ -127,48 +134,61 @@
             <div class="list">
                 <h2>Jogadores</h2>
                 <ul id="jogadores-list">
-                    <li><input type="checkbox" value="Vinnic"> Vinnic</li>
-                    <li><input type="checkbox" value="Jubira"> Jubira</li>
-                    <li><input type="checkbox" value="Dadico"> Dadico</li>
-                    <li><input type="checkbox" value="Renê"> Renê</li>
-                    <li><input type="checkbox" value="Léocarros"> Léocarros</li>
-                    <li><input type="checkbox" value="Dris"> Dris</li>
-                    <li><input type="checkbox" value="Witsel"> Witsel</li>
-                    <li><input type="checkbox" value="Gizão"> Gizão</li>
-                    <li><input type="checkbox" value="Português"> Português</li>
+                    <li><input type="checkbox" value="Dadico"> <span>Dadico</span></li>
+                    <li><input type="checkbox" value="Dris"> <span>Dris</span></li>
+                    <li><input type="checkbox" value="Gizão"> <span>Gizão</span></li>
+                    <li><input type="checkbox" value="Jubira"> <span>Jubira</span></li>
+                    <li><input type="checkbox" value="Léocarros"> <span>Léocarros</span></li>
+                    <li><input type="checkbox" value="Português"> <span>Português</span></li>
+                    <li><input type="checkbox" value="Raphael"> <span>Raphael</span></li>
+                    <li><input type="checkbox" value="Renê"> <span>Renê</span></li>
+                    <li><input type="checkbox" value="Vinnic"> <span>Vinnic</span></li>
+                    <li><input type="checkbox" value="Witsel"> <span>Witsel</span></li>
+                    <li><input type="checkbox" value="Witsel"> <span>Convidado1</span></li>
+                    <li><input type="checkbox" value="Witsel"> <span>Convidado2</span></li>
+                    <li><input type="checkbox" value="Witsel"> <span>Convidado3</span></li>
+                    <li><input type="checkbox" value="Witsel"> <span>Convidado4</span></li>
                 </ul>
             </div>
             <div class="list">
                 <h2>Times</h2>
                 <ul id="times-list">
-                    <li><input type="checkbox" value="Liverpool"><img class="team-logo" src="https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-256.png" alt="Liverpool"></li>
-                    <li><input type="checkbox" value="Real Madrid"><img class="team-logo" src="https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png" alt="Real Madrid"></li>
-                    <li><input type="checkbox" value="Barcelona"><img class="team-logo" src="https://logodetimes.com/times/barcelona/logo-barcelona-256.png" alt="Barcelona"></li>
-                    <li><input type="checkbox" value="Bayern"><img class="team-logo" src="https://logodetimes.com/times/bayern-munchen/bayern-munchen-256.png" alt="Bayern"></li>
-                    <li><input type="checkbox" value="Borussia"><img class="team-logo" src="https://logodetimes.com/times/borussia-dortmund/borussia-dortmund-256.png" alt="Borussia"></li>
-                    <li><input type="checkbox" value="Chelsea"><img class="team-logo" src="https://logodetimes.com/times/chelsea-football-club/chelsea-football-club-256.png" alt="Chelsea"></li>
-                    <li><input type="checkbox" value="Manchester City"><img class="team-logo" src="https://logodetimes.com/times/manchester-city-football-club/manchester-city-football-club-256.png" alt="Manchester City"></li>
-                    <li><input type="checkbox" value="Manchester United"><img class="team-logo" src="https://logodetimes.com/times/manchester-united-football-club/manchester-united-football-club-256.png" alt="Manchester United"></li>
-                    <li><input type="checkbox" value="PSG"><img class="team-logo" src="https://logodetimes.com/times/paris-saint-germain/paris-saint-germain-256.png" alt="PSG"></li>
+                    <li><input type="checkbox" value="Arsenal"><img class="team-logo" src="https://logodetimes.com/times/arsenal-football-club/arsenal-football-club-256.png" alt="Arsenal"> <span></span></li>
+                    <li><input type="checkbox" value="Barcelona"><img class="team-logo" src="https://logodetimes.com/times/barcelona/logo-barcelona-256.png" alt="Barcelona"> <span></span></li>
+                    <li><input type="checkbox" value="Bayern"><img class="team-logo" src="https://logodetimes.com/times/bayern-munchen/bayern-munchen-256.png" alt="Bayern"> <span></span></li>
+                    <li><input type="checkbox" value="Borussia"><img class="team-logo" src="https://logodetimes.com/times/borussia-dortmund/borussia-dortmund-256.png" alt="Borussia"> <span></span></li>
+                    <li><input type="checkbox" value="Chelsea"><img class="team-logo" src="https://logodetimes.com/times/chelsea-football-club/chelsea-football-club-256.png" alt="Chelsea"> <span></span></li>
+                    <li><input type="checkbox" value="Internazionale"><img class="team-logo" src="https://logodetimes.com/times/football-club-internazionale-milano/football-club-internazionale-milano-256.png" alt="Internazionale"> <span></span></li>
+                    <li><input type="checkbox" value="Juventus"><img class="team-logo" src="https://logodetimes.com/times/juventus-football-club/juventus-football-club-256.png" alt="Juventus"> <span></span></li>
+                    <li><input type="checkbox" value="Liverpool"><img class="team-logo" src="https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-256.png" alt="Liverpool"> <span></span></li>
+                    <li><input type="checkbox" value="Manchester City"><img class="team-logo" src="https://logodetimes.com/times/manchester-city-football-club/manchester-city-football-club-256.png" alt="Manchester City"> <span></span></li>
+                    <li><input type="checkbox" value="Manchester United"><img class="team-logo" src="https://logodetimes.com/times/manchester-united-football-club/manchester-united-football-club-256.png" alt="Manchester United"> <span></span></li>
+                    <li><input type="checkbox" value="Milan"><img class="team-logo" src="https://logodetimes.com/times/associazione-calcio-milan/associazione-calcio-milan-256.png" alt="Milan"> <span></span></li>
+                    <li><input type="checkbox" value="PSG"><img class="team-logo" src="https://logodetimes.com/times/paris-saint-germain/paris-saint-germain-256.png" alt="PSG"> <span></span></li>
+                    <li><input type="checkbox" value="Real Madrid"><img class="team-logo" src="https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png" alt="Real Madrid"> <span> </span></li>
                 </ul>
             </div>
         </div>
-        <button id="sorteio-btn" onclick="realizarSorteio()" title="Selecione o mesmo número de jogadores e times, e certifique-se de que sejam 2, 4 ou 8 jogadores/times.">Realizar Sorteio</button>
-        <div class="result" id="result"></div>
-        <div class="error-message" id="error-message"></div>
+        <button id="sorteio-btn" onclick="realizarSorteio()" title="Selecione o mesmo número de jogadores e times, e certifique-se de que sejam 2, 4 ou 8 jogadores/times." disabled>Sortear Confrontos</button>
+        <div id="error-message" class="error-message"></div>
+        <div id="result" class="result"></div>
     </div>
 
     <script>
         const logos = {
-            "Liverpool": "https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-256.png",
-            "Real Madrid": "https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png",
+            "Arsenal": "https://logodetimes.com/times/arsenal-football-club/arsenal-football-club-256.png",
             "Barcelona": "https://logodetimes.com/times/barcelona/logo-barcelona-256.png",
             "Bayern": "https://logodetimes.com/times/bayern-munchen/bayern-munchen-256.png",
             "Borussia": "https://logodetimes.com/times/borussia-dortmund/borussia-dortmund-256.png",
             "Chelsea": "https://logodetimes.com/times/chelsea-football-club/chelsea-football-club-256.png",
+            "Internazionale": "https://logodetimes.com/times/football-club-internazionale-milano/football-club-internazionale-milano-256.png",
+            "Juventus": "https://logodetimes.com/times/juventus-football-club/juventus-football-club-256.png",
+            "Liverpool": "https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-256.png",
             "Manchester City": "https://logodetimes.com/times/manchester-city-football-club/manchester-city-football-club-256.png",
             "Manchester United": "https://logodetimes.com/times/manchester-united-football-club/manchester-united-football-club-256.png",
-            "PSG": "https://logodetimes.com/times/paris-saint-germain/paris-saint-germain-256.png"
+            "Milan": "https://logodetimes.com/times/associazione-calcio-milan/associazione-calcio-milan-256.png",
+            "PSG": "https://logodetimes.com/times/paris-saint-germain/paris-saint-germain-256.png",
+            "Real Madrid": "https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png"
         };
 
         function getSelectedValues(listId) {
@@ -216,9 +236,9 @@
                 confronto.className = 'confronto';
                 confronto.innerHTML = `
                     <div class="player-name">${jogadoresEmbaralhados[i]}</div>
-                    <img class="team-logo" src="${logos[timesEmbaralhados[i]]}" alt="${timesEmbaralhados[i]}"> 
-                    <span>vs</span>
-                    <img class="team-logo" src="${logos[timesEmbaralhados[i + 1]]}" alt="${timesEmbaralhados[i + 1]}"> 
+                    <img class="team-logo" src="${logos[timesEmbaralhados[i]]}" alt="${timesEmbaralhados[i]}">
+                    <span class="vs">vs</span>
+                    <img class="team-logo" src="${logos[timesEmbaralhados[i + 1]]}" alt="${timesEmbaralhados[i + 1]}">
                     <div class="player-name">${jogadoresEmbaralhados[i + 1]}</div>
                 `;
                 resultElement.appendChild(confronto);
