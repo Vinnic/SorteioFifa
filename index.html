@@ -84,15 +84,21 @@
         }
         .result {
             margin-top: 20px;
-            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
         .confronto {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 75, 255, 0.2);
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transition: opacity 1s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
+            text-align: center;
         }
         .confronto.show {
             opacity: 1;
@@ -100,9 +106,11 @@
         .team-logo {
             width: 30px;
             height: 30px;
-            vertical-align: middle;
-            margin-left: 10px;
-			margin-right: 10px;
+        }
+        .player-name {
+            flex: 1;
+            min-width: 80px;
+            text-align: center;
         }
         .error-message {
             color: #ffd700;
@@ -133,15 +141,15 @@
             <div class="list">
                 <h2>Times</h2>
                 <ul id="times-list">
-                    <li><input type="checkbox" value="Liverpool"><img class="team-logo" src="https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-256.png" alt="Liverpool"> Liverpool</li>
-                    <li><input type="checkbox" value="Real Madrid"><img class="team-logo" src="https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png" alt="Real Madrid"> Real Madrid</li>
-                    <li><input type="checkbox" value="Barcelona"><img class="team-logo" src="https://logodetimes.com/times/barcelona/logo-barcelona-256.png" alt="Barcelona"> Barcelona</li>
-                    <li><input type="checkbox" value="Bayern"><img class="team-logo" src="https://logodetimes.com/times/bayern-munchen/bayern-munchen-256.png" alt="Bayern"> Bayern</li>
-                    <li><input type="checkbox" value="Borussia"><img class="team-logo" src="https://logodetimes.com/times/borussia-dortmund/borussia-dortmund-256.png" alt="Borussia"> Borussia</li>
-                    <li><input type="checkbox" value="Chelsea"><img class="team-logo" src="https://logodetimes.com/times/chelsea-football-club/chelsea-football-club-256.png" alt="Chelsea"> Chelsea</li>
-                    <li><input type="checkbox" value="Manchester City"><img class="team-logo" src="https://logodetimes.com/times/manchester-city-football-club/manchester-city-football-club-256.png" alt="Manchester City"> Manchester City</li>
-                    <li><input type="checkbox" value="Manchester United"><img class="team-logo" src="https://logodetimes.com/times/manchester-united-football-club/manchester-united-football-club-256.png" alt="Manchester United"> Manchester United</li>
-                    <li><input type="checkbox" value="PSG"><img class="team-logo" src="https://logodetimes.com/times/paris-saint-germain/paris-saint-germain-256.png" alt="PSG"> PSG</li>
+                    <li><input type="checkbox" value="Liverpool"><img class="team-logo" src="https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-256.png" alt="Liverpool"></li>
+                    <li><input type="checkbox" value="Real Madrid"><img class="team-logo" src="https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png" alt="Real Madrid"></li>
+                    <li><input type="checkbox" value="Barcelona"><img class="team-logo" src="https://logodetimes.com/times/barcelona/logo-barcelona-256.png" alt="Barcelona"></li>
+                    <li><input type="checkbox" value="Bayern"><img class="team-logo" src="https://logodetimes.com/times/bayern-munchen/bayern-munchen-256.png" alt="Bayern"></li>
+                    <li><input type="checkbox" value="Borussia"><img class="team-logo" src="https://logodetimes.com/times/borussia-dortmund/borussia-dortmund-256.png" alt="Borussia"></li>
+                    <li><input type="checkbox" value="Chelsea"><img class="team-logo" src="https://logodetimes.com/times/chelsea-football-club/chelsea-football-club-256.png" alt="Chelsea"></li>
+                    <li><input type="checkbox" value="Manchester City"><img class="team-logo" src="https://logodetimes.com/times/manchester-city-football-club/manchester-city-football-club-256.png" alt="Manchester City"></li>
+                    <li><input type="checkbox" value="Manchester United"><img class="team-logo" src="https://logodetimes.com/times/manchester-united-football-club/manchester-united-football-club-256.png" alt="Manchester United"></li>
+                    <li><input type="checkbox" value="PSG"><img class="team-logo" src="https://logodetimes.com/times/paris-saint-germain/paris-saint-germain-256.png" alt="PSG"></li>
                 </ul>
             </div>
         </div>
@@ -202,10 +210,17 @@
             const resultElement = document.getElementById('result');
             resultElement.innerHTML = '';
 
+            // Cria os confrontos
             for (let i = 0; i < jogadoresEmbaralhados.length; i += 2) {
                 const confronto = document.createElement('div');
                 confronto.className = 'confronto';
-                confronto.innerHTML = `<p>${jogadoresEmbaralhados[i]} <img class="team-logo" src="${logos[timesEmbaralhados[i]]}" alt="${timesEmbaralhados[i]}"> vs <img class="team-logo" src="${logos[timesEmbaralhados[i + 1]]}" alt="${timesEmbaralhados[i + 1]}"> ${jogadoresEmbaralhados[i + 1]} </p>`;
+                confronto.innerHTML = `
+                    <div class="player-name">${jogadoresEmbaralhados[i]}</div>
+                    <img class="team-logo" src="${logos[timesEmbaralhados[i]]}" alt="${timesEmbaralhados[i]}"> 
+                    <span>vs</span>
+                    <img class="team-logo" src="${logos[timesEmbaralhados[i + 1]]}" alt="${timesEmbaralhados[i + 1]}"> 
+                    <div class="player-name">${jogadoresEmbaralhados[i + 1]}</div>
+                `;
                 resultElement.appendChild(confronto);
             }
 
