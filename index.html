@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio de Confrontos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('background.jpg');
+            background-size: cover;
+            color: #ffffff;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: rgba(42, 46, 71, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffd700;
+        }
+        .list-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .list {
+            width: 45%;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #ffd700;
+            cursor: pointer;
+            position: relative;
+        }
+        input[type="checkbox"]:checked::before {
+            content: '';
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-color: #1b1e34;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #ffd700;
+            color: #1b1e34;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        button:hover:not(:disabled) {
+            background-color: #e6c200;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .confronto {
+            opacity: 0;
+            transition: opacity 1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .confronto.show {
+            opacity: 1;
+        }
+        .team-logo {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            margin-left: 10px;
+			margin-right: 10px;
+        }
+        .error-message {
+            color: #ffd700;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sorteio de Confrontos</h1>
+        <div class="list-container">
+            <div class="list">
+                <h2>Jogadores</h2>
+                <ul id="jogadores-list">
+                    <li><input type="checkbox" value="Vinnic"> Vinnic</li>
+                    <li><input type="checkbox" value="Jubira"> Jubira</li>
+                    <li><input type="checkbox" value="Dadico"> Dadico</li>
+                    <li><input type="checkbox" value="Renê"> Renê</li>
+                    <li><input type="checkbox" value="Léocarros"> Léocarros</li>
+                    <li><input type="checkbox" value="Dris"> Dris</li>
+                    <li><input type="checkbox" value="Witsel"> Witsel</li>
+                    <li><input type="checkbox" value="Gizão"> Gizão</li>
+                    <li><input type="checkbox" value="Português"> Português</li>
+                </ul>
+            </div>
+            <div class="list">
+                <h2>Times</h2>
+                <ul id="times-list">
+                    <li><input type="checkbox" value="Liverpool"><img class="team-logo" src="https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-256.png" alt="Liverpool"> Liverpool</li>
+                    <li><input type="checkbox" value="Real Madrid"><img class="team-logo" src="https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png" alt="Real Madrid"> Real Madrid</li>
+                    <li><input type="checkbox" value="Barcelona"><img class="team-logo" src="https://logodetimes.com/times/barcelona/logo-barcelona-256.png" alt="Barcelona"> Barcelona</li>
+                    <li><input type="checkbox" value="Bayern"><img class="team-logo" src="https://logodetimes.com/times/bayern-munchen/bayern-munchen-256.png" alt="Bayern"> Bayern</li>
+                    <li><input type="checkbox" value="Borussia"><img class="team-logo" src="https://logodetimes.com/times/borussia-dortmund/borussia-dortmund-256.png" alt="Borussia"> Borussia</li>
+                    <li><input type="checkbox" value="Chelsea"><img class="team-logo" src="https://logodetimes.com/times/chelsea-football-club/chelsea-football-club-256.png" alt="Chelsea"> Chelsea</li>
+                    <li><input type="checkbox" value="Manchester City"><img class="team-logo" src="https://logodetimes.com/times/manchester-city-football-club/manchester-city-football-club-256.png" alt="Manchester City"> Manchester City</li>
+                    <li><input type="checkbox" value="Manchester United"><img class="team-logo" src="https://logodetimes.com/times/manchester-united-football-club/manchester-united-football-club-256.png" alt="Manchester United"> Manchester United</li>
+                    <li><input type="checkbox" value="PSG"><img class="team-logo" src="https://logodetimes.com/times/paris-saint-germain/paris-saint-germain-256.png" alt="PSG"> PSG</li>
+                </ul>
+            </div>
+        </div>
+        <button id="sorteio-btn" onclick="realizarSorteio()" title="Selecione o mesmo número de jogadores e times, e certifique-se de que sejam 2, 4 ou 8 jogadores/times.">Realizar Sorteio</button>
+        <div class="result" id="result"></div>
+        <div class="error-message" id="error-message"></div>
+    </div>
+
+    <script>
+        const logos = {
+            "Liverpool": "https://logodetimes.com/times/liverpool-football-club/liverpool-football-club-256.png",
+            "Real Madrid": "https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png",
+            "Barcelona": "https://logodetimes.com/times/barcelona/logo-barcelona-256.png",
+            "Bayern": "https://logodetimes.com/times/bayern-munchen/bayern-munchen-256.png",
+            "Borussia": "https://logodetimes.com/times/borussia-dortmund/borussia-dortmund-256.png",
+            "Chelsea": "https://logodetimes.com/times/chelsea-football-club/chelsea-football-club-256.png",
+            "Manchester City": "https://logodetimes.com/times/manchester-city-football-club/manchester-city-football-club-256.png",
+            "Manchester United": "https://logodetimes.com/times/manchester-united-football-club/manchester-united-football-club-256.png",
+            "PSG": "https://logodetimes.com/times/paris-saint-germain/paris-saint-germain-256.png"
+        };
+
+        function getSelectedValues(listId) {
+            const checkboxes = document.querySelectorAll(`#${listId} input[type="checkbox"]:checked`);
+            return Array.from(checkboxes).map(cb => cb.value);
+        }
+
+        function embaralhar(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function realizarSorteio() {
+            const jogadores = getSelectedValues('jogadores-list');
+            const times = getSelectedValues('times-list');
+
+            // Verifica se o número de jogadores e times é 2, 4 ou 8
+            if (![2, 4, 8].includes(jogadores.length)) {
+                document.getElementById('error-message').innerText = 'O número de jogadores e times deve ser 2, 4 ou 8.';
+                document.getElementById('error-message').style.display = 'block';
+                return;
+            }
+
+            // Verifica se o número de jogadores é igual ao número de times
+            if (jogadores.length !== times.length) {
+                document.getElementById('error-message').innerText = 'O número de jogadores deve ser igual ao número de times.';
+                document.getElementById('error-message').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('error-message').style.display = 'none'; // Esconde a mensagem de erro
+
+            const jogadoresEmbaralhados = embaralhar(jogadores);
+            const timesEmbaralhados = embaralhar(times);
+
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = '';
+
+            for (let i = 0; i < jogadoresEmbaralhados.length; i += 2) {
+                const confronto = document.createElement('div');
+                confronto.className = 'confronto';
+                confronto.innerHTML = `<p>${jogadoresEmbaralhados[i]} <img class="team-logo" src="${logos[timesEmbaralhados[i]]}" alt="${timesEmbaralhados[i]}"> vs <img class="team-logo" src="${logos[timesEmbaralhados[i + 1]]}" alt="${timesEmbaralhados[i + 1]}"> ${jogadoresEmbaralhados[i + 1]} </p>`;
+                resultElement.appendChild(confronto);
+            }
+
+            const confrontos = document.querySelectorAll('.confronto');
+            confrontos.forEach((confronto, index) => {
+                setTimeout(() => {
+                    confronto.classList.add('show');
+                }, index * 1000);
+            });
+        }
+
+        // Função para validar se o botão deve ser habilitado ou desabilitado
+        function updateButtonState() {
+            const jogadores = getSelectedValues('jogadores-list');
+            const times = getSelectedValues('times-list');
+            const button = document.getElementById('sorteio-btn');
+            const errorMessage = document.getElementById('error-message');
+
+            if (jogadores.length === times.length && [2, 4, 8].includes(jogadores.length)) {
+                button.disabled = false;
+                button.title = 'Realizar sorteio';
+                errorMessage.style.display = 'none';
+            } else {
+                button.disabled = true;
+                button.title = 'Selecione o mesmo número de jogadores e times, e certifique-se de que sejam 2, 4 ou 8 jogadores/times.';
+                if (jogadores.length !== times.length) {
+                    errorMessage.innerText = 'O número de jogadores deve ser igual ao número de times.';
+                } else {
+                    errorMessage.innerText = 'O número de jogadores e times deve ser 2, 4 ou 8.';
+                }
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        // Adiciona ouvinte para as checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            cb.addEventListener('change', updateButtonState);
+        });
+    </script>
+</body>
+</html>
