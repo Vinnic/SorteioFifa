@@ -139,7 +139,7 @@
         <div class="list-container">
             <div class="list">
                 <h2>Jogadores</h2>
-				<div class="counter" id="players-counter">Jogadores selecionados: 0</div>
+				<div class="counter" id="players-counter">selecionados: 0</div>
                 <ul id="jogadores-list">
                     <li><input type="checkbox" value="Dadico"> <span>Dadico</span></li>
                     <li><input type="checkbox" value="Dris"> <span>Dris</span></li>
@@ -159,7 +159,7 @@
             </div>
             <div class="list">
                 <h2>Times</h2>
-				<div class="counter" id="teams-counter">Times selecionados: 0</div>
+				<div class="counter" id="teams-counter">selecionados: 0</div>
                 <ul id="times-list">
                     <li><input type="checkbox" value="Arsenal"><img class="team-logo" src="https://logodetimes.com/times/arsenal-football-club/arsenal-football-club-256.png" alt="Arsenal"> <span></span></li>
                     <li><input type="checkbox" value="Barcelona"><img class="team-logo" src="https://logodetimes.com/times/barcelona/logo-barcelona-256.png" alt="Barcelona"> <span></span></li>
@@ -256,7 +256,7 @@
             confrontos.forEach((confronto, index) => {
                 setTimeout(() => {
                     confronto.classList.add('show');
-                }, index * 1000);
+                }, index * 2500);
             });
         }
 
@@ -283,8 +283,8 @@
             }
 			
 			// Atualiza os contadores
-            document.getElementById('players-counter').innerText = `Jogadores selecionados: ${jogadores.length}`;
-            document.getElementById('teams-counter').innerText = `Times selecionados: ${times.length}`;
+            document.getElementById('players-counter').innerText = `selecionados: ${jogadores.length}`;
+            document.getElementById('teams-counter').innerText = `selecionados: ${times.length}`;
         }
 
         // Adiciona ouvinte para as checkboxes
