@@ -131,6 +131,29 @@
             text-align: center;
             margin-bottom: 10px;
         }
+        input[type="text"] {
+            background-color: rgba(42, 46, 71, 0.7); /* Cor de fundo azul escura com opacidade */
+            border: 2px solid #ffd700; /* Cor da borda amarela */
+            border-radius: 8px; /* Borda arredondada */
+            color: white; /* Cor do texto */
+			width: 60%; /* Largura */
+            padding: 5px; /* Espaçamento interno */
+        }
+		input[type="text"]::placeholder {
+            color: #ffd700; /* Cor amarela para o placeholder */
+        }
+		/* Estilo para o logo do time */
+		.team-logo {
+			width: 30px; /* Ajuste o tamanho conforme necessário */
+			height: auto;
+			transition: transform 0.3s ease, filter 0.3s ease;
+		}
+
+		/* Efeito de hover no logo do time */
+		.team-logo:hover {
+			transform: scale(1.1);
+			filter: brightness(1.2);
+		}
     </style>
 </head>
 <body>
@@ -151,10 +174,22 @@
                     <li><input type="checkbox" value="Renê"> <span>Renê</span></li>
                     <li><input type="checkbox" value="Vinnic"> <span>Vinnic</span></li>
                     <li><input type="checkbox" value="Witsel"> <span>Witsel</span></li>
-                    <li><input type="checkbox" value="Convidado1"> <span>Convidado1</span></li>
-                    <li><input type="checkbox" value="Convidado2"> <span>Convidado2</span></li>
-                    <li><input type="checkbox" value="Convidado3"> <span>Convidado3</span></li>
-                    <li><input type="checkbox" value="Convidado4"> <span>Convidado4</span></li>
+					<li>
+						<input type="checkbox" value="Convidado1"> 
+						<input type="text" placeholder="Convidado1" oninput="updateCheckboxValue(this)">
+					</li>
+					<li>
+						<input type="checkbox" value="Convidado2"> 
+						<input type="text" placeholder="Convidado2" oninput="updateCheckboxValue(this)">
+					</li>
+					<li>
+						<input type="checkbox" value="Convidado3"> 
+						<input type="text" placeholder="Convidado3" oninput="updateCheckboxValue(this)">
+					</li>
+					<li>
+						<input type="checkbox" value="Convidado4"> 
+						<input type="text" placeholder="Convidado4" oninput="updateCheckboxValue(this)">
+					</li>
                 </ul>
             </div>
             <div class="list">
@@ -199,6 +234,11 @@
             "Real Madrid": "https://logodetimes.com/times/real-madrid/logo-real-madrid-escudo-256.png"
         };
 
+        function updateCheckboxValue(inputElement) {
+            var checkbox = inputElement.previousElementSibling;
+            checkbox.value = inputElement.value;
+        }
+		
         function getSelectedValues(listId) {
             const checkboxes = document.querySelectorAll(`#${listId} input[type="checkbox"]:checked`);
             return Array.from(checkboxes).map(cb => cb.value);
